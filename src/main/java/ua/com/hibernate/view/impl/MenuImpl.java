@@ -22,11 +22,13 @@ public class MenuImpl {
                 "4.FindById User" +
                 "5.FindByAll Users" +
                 "6.Add Book to User" +
-                "7.Find All Books User");
+                "7.Find All Books User" +
+                "8.Exit");
         loop:
         switch (scanner.nextInt()) {
             case 1 -> User();
-            case 10 -> {
+            case 8 -> {
+                break loop;
             }
         }
 
