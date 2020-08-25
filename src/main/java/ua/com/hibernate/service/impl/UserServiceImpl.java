@@ -3,6 +3,7 @@ package ua.com.hibernate.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.com.hibernate.model.User;
+import ua.com.hibernate.repository.UserRepository;
 import ua.com.hibernate.repository.impl.UserRepositoryImpl;
 import ua.com.hibernate.service.UserService;
 
@@ -11,7 +12,7 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
-    private UserRepositoryImpl userRepository;
+    private UserRepository userRepository;
 
     @Override
     public void addUser(User user) {
