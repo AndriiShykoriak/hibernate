@@ -3,6 +3,7 @@ package ua.com.hibernate.repository.impl;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import ua.com.hibernate.model.Book;
 import ua.com.hibernate.repository.BookRepository;
