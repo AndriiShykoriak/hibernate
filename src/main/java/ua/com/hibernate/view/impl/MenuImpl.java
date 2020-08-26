@@ -45,7 +45,10 @@ public class MenuImpl implements Menu {
             case 8 -> {
                 break loop;
             }
-            default -> System.out.println("Input correct number");
+            default -> {
+                System.out.println("Input correct number");
+                start();
+            }
         }
 
     }
