@@ -1,7 +1,5 @@
 package ua.com.hibernate.config;
 
-import org.apache.commons.configuration.ConfigurationException;
-import org.apache.commons.configuration.PropertiesConfiguration;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -18,29 +16,26 @@ import java.util.Properties;
 
 @Configuration
 @ComponentScan(basePackages = "ua.com.hibernate")
-@PropertySource("classpath:application.properties")
+@PropertySource("application.properties")
 @EnableTransactionManagement
 public class DataConfig {
-    PropertiesConfiguration config = getProperties();
-//    @Value("${spring.datasource.driver-class-name}")
-//    private String className;
-//    @Value("${spring.datasource.url}")
-//    private String url;
-//    @Value("${spring.datasource.username}")
-//    private String username;
-//    @Value("${spring.datasource.password}")
-//    private String password;
 
-    public DataConfig() throws ConfigurationException {
-    }
+    @Value("${spring.datasource.driver-class-name}")
+    private String className;
+    @Value("${spring.datasource.url}")
+    private String url;
+    @Value("${spring.datasource.username}")
+    private String username;
+    @Value("${spring.datasource.password}")
+    private String password;
 
     @Bean
     public DataSource dataSource() {
         var dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName( config.getString("spring.datasource.driver-class-name"));
-        dataSource.setUrl(config.getString("spring.datasource.url"));
-        dataSource.setUsername(config.getString("spring.datasource.username"));
-        dataSource.setPassword(config.getString("spring.datasource.password"));
+        dataSource.setDriverClassName(className);
+        dataSource.setUrl(url);
+        dataSource.setUsername(username);
+        dataSource.setPassword(password);
         return dataSource;
     }
 
@@ -67,10 +62,4 @@ public class DataConfig {
         hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
         return hibernateProperties;
     }
-    public PropertiesConfiguration getProperties() throws ConfigurationException {
-        PropertiesConfiguration config = new PropertiesConfiguration();
-        config.load("application.properties");
-        return config;
-    }
-
 }
