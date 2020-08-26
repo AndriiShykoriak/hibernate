@@ -29,7 +29,7 @@ public class MenuImpl implements Menu {
                 "2.Update User\n" +
                 "3.Delete User\n" +
                 "4.FindById User\n" +
-                "5.FindByAll Users from books\n" +
+                "5.FindByAll Users and show theirs books\n" +
                 "6.Add Book to User\n" +
                 "7.Find All Books \n" +
                 "8.Exit");
@@ -81,6 +81,7 @@ public class MenuImpl implements Menu {
         var user = userService.findById(scanner.nextInt());
         userService.deleteUser(user);
         System.out.println("user deleted");
+        start();
     }
 
     @Override
